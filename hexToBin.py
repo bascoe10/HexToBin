@@ -13,8 +13,10 @@ def main():
     data = []
     with open(source) as src:
         for line in src:
-            for _hex in line.split(" "):
-                data.append(int(_hex, 16))
+            convertedLine = map(lambda _hex: int(_hex, 16), line.split(" "))
+            data += convertedLine
+            # for _hex in line.split(" "):
+            #     data.append(int(_hex, 16))
     print("Done parsing")
     with open(dest, "wb") as dst:
         dst.write(bytearray(data))
